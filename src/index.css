@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Base colors - GitHub inspired with modern twist */
+    /* Default (light) theme - Keeping a light fallback, but focusing on dark */
     --background: 0 0% 100%;
     --foreground: 216 12% 8%;
 
@@ -18,19 +18,16 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 216 12% 8%;
 
-    /* Primary - GitHub blue accent */
-    --primary: 213 78% 51%;
+    --primary: 213 78% 51%; /* Original primary */
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Subtle gray */
     --secondary: 210 40% 96%;
     --secondary-foreground: 216 12% 8%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 20% 50%;
 
-    /* Accent - Purple for special elements */
-    --accent: 262 83% 58%;
+    --accent: 262 83% 58%; /* Original accent */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -57,63 +54,63 @@ All colors MUST be HSL.
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
 
     /* Sidebar */
-    --sidebar-background: 216 28% 7%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 213 78% 51%;
+    --sidebar-background: 216 28% 7%; /* Darker background for sidebar */
+    --sidebar-foreground: 210 40% 98%; /* Light text for contrast */
+    --sidebar-primary: 213 78% 51%; /* Original primary for sidebar items */
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 216 28% 12%;
+    --sidebar-accent: 216 28% 12%; /* Darker accent for hover/active */
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 216 28% 12%;
     --sidebar-ring: 213 78% 51%;
   }
 
   .dark {
-    /* Dark mode - GitHub dark inspired */
-    --background: 216 28% 7%;
-    --foreground: 210 40% 98%;
+    /* Dark mode - Custom dark theme */
+    --background: 10 10% 5%; /* Very dark background */
+    --foreground: 220 10% 90%; /* Light gray text */
 
-    --card: 216 28% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 10 10% 8%; /* Slightly lighter than background for cards */
+    --card-foreground: 220 10% 90%;
 
-    --popover: 216 28% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 10 10% 8%;
+    --popover-foreground: 220 10% 90%;
 
-    --primary: 213 78% 51%;
+    --primary: 270 80% 60%; /* Vibrant purple for primary actions */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 216 28% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 180 80% 60%; /* Vibrant cyan for secondary actions */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 216 28% 12%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 10% 15%; /* Darker muted for subtle elements */
+    --muted-foreground: 220 5% 60%; /* Muted text */
 
-    --accent: 262 83% 58%;
+    --accent: 180 80% 60%; /* Vibrant cyan for accent */
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 80% 50%; /* Red for destructive actions */
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 216 28% 18%;
-    --input: 216 28% 18%;
-    --ring: 213 78% 51%;
+    --border: 220 10% 20%; /* Darker border */
+    --input: 220 10% 15%;
+    --ring: 270 80% 60%;
 
     /* Dashboard dark */
-    --dashboard-bg: 216 28% 7%;
-    --dashboard-card: 216 28% 10%;
-    --dashboard-border: 216 28% 18%;
+    --dashboard-bg: 10 10% 5%;
+    --dashboard-card: 10 10% 8%;
+    --dashboard-border: 220 10% 20%;
 
     /* Gradients dark */
-    --gradient-primary: linear-gradient(135deg, hsl(213 78% 51%), hsl(262 83% 58%));
-    --gradient-card: linear-gradient(145deg, hsl(216 28% 10%), hsl(216 28% 12%));
+    --gradient-primary: linear-gradient(135deg, hsl(270 80% 60%), hsl(180 80% 60%)); /* Purple to Cyan */
+    --gradient-card: linear-gradient(145deg, hsl(10 10% 8%), hsl(10 10% 5%)); /* Dark gray to darker gray */
 
-    --sidebar-background: 216 28% 7%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 213 78% 51%;
+    --sidebar-background: 10 10% 8%; /* Slightly lighter than main background */
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 270 80% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 216 28% 12%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 216 28% 12%;
-    --sidebar-ring: 213 78% 51%;
+    --sidebar-accent: 220 10% 15%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 220 10% 20%;
+    --sidebar-ring: 270 80% 60%;
   }
 }
 

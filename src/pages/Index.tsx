@@ -1,3 +1,5 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -12,9 +14,11 @@ import {
   Globe,
   Check
 } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const Index = () => {
+  const { token, logout } = useAuth();
+  const navigate = useNavigate();
+
   const features = [
     {
       icon: MessageSquare,
@@ -118,12 +122,24 @@ const Index = () => {
             <a href="#contact" className="text-sm hover:text-primary transition-colors">Contato</a>
           </nav>
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm">Entrar</Button>
-            <Button asChild size="sm">
-              <Link to="/dashboard">
-                Acessar Dashboard <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-            </Button>
+            {token ? (
+              <Button asChild size="sm">
+                <Link to="/dashboard">
+                  Acessar Dashboard <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            ) : (
+              <>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link to="/login">Entrar</Link>
+                </Button>
+                <Button asChild size="sm">
+                  <Link to="/register">
+                    Registrar <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </header>
@@ -144,7 +160,7 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild className="text-lg px-8">
-              <Link to="/dashboard">
+              <Link to={token ? "/dashboard" : "/register"}>
                 Começar Agora <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
@@ -293,3 +309,4 @@ const Index = () => {
 };
 
 export default Index;
+

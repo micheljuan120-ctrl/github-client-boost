@@ -12,6 +12,8 @@ import {
   Users,
   Zap
 } from "lucide-react";
+import { useAuth } from "../AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function RecentActivities() {
   const activities = [
@@ -174,7 +176,7 @@ function SystemStatus() {
 export default function Dashboard() {
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="space-y-6 p-6">
         {/* Welcome Section */}
         <div className="animate-fade-in">
           <h1 className="text-3xl font-bold tracking-tight">

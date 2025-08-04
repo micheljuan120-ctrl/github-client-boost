@@ -11,41 +11,52 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useAuth } from "../../AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export function DashboardHeader() {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
-    <header className="sticky top-0 z-50 border-b border-dashboard-border bg-dashboard-card/95 backdrop-blur supports-[backdrop-filter]:bg-dashboard-card/60">
+    <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
       <div className="flex h-16 items-center gap-4 px-6">
-        <SidebarTrigger className="h-8 w-8" />
+        <SidebarTrigger className="h-8 w-8 md:hidden" />
+        <SidebarTrigger className="h-8 w-8 hidden md:block" />
         
         <div className="flex-1 flex items-center gap-4">
-          <div className="relative flex-1 max-w-md">
+          <div data-lov-id="src\components\dashboard\DashboardHeader.tsx:32:10" data-lov-name="div" data-component-path="src\components\dashboard\DashboardHeader.tsx" data-component-line="32" data-component-file="DashboardHeader.tsx" data-component-name="div" data-component-content="%7B%22className%22%3A%22relative%20flex-1%20max-w-xs%22%7D" class="relative flex-1 max-w-xs">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               placeholder="Buscar integrações, automações..."
-              className="pl-10 bg-secondary/50 border-0 focus-visible:ring-1"
+              className="pl-10 bg-input border-0 focus-visible:ring-1 text-foreground"
             />
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="h-4 w-4" />
-            <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full flex items-center justify-center text-[10px] text-white">
+          <Button variant="ghost" size="icon" className="relative rounded-xl">
+            <Bell className="h-4 w-4 text-foreground" />
+            <span className="absolute -top-1 -right-1 h-3 w-3 bg-destructive rounded-full flex items-center justify-center text-[10px] text-white">
               3
             </span>
           </Button>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+              <Button variant="ghost" className="relative h-8 w-8 rounded-xl">
                 <Avatar className="h-8 w-8">
                   <AvatarImage src="/placeholder-avatar.jpg" alt="User" />
                   <AvatarFallback>JD</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuContent className="w-56 bg-card text-foreground border-border rounded-xl" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">João Dias</p>
@@ -54,12 +65,12 @@ export function DashboardHeader() {
                   </p>
                 </div>
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Perfil</DropdownMenuItem>
-              <DropdownMenuItem>Configurações</DropdownMenuItem>
-              <DropdownMenuItem>Planos</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Sair</DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-border" />
+              <DropdownMenuItem className="focus:bg-secondary focus:text-secondary-foreground rounded-md">Perfil</DropdownMenuItem>
+              <DropdownMenuItem className="focus:bg-secondary focus:text-secondary-foreground rounded-md">Configurações</DropdownMenuItem>
+              <DropdownMenuItem className="focus:bg-secondary focus:text-secondary-foreground rounded-md">Planos</DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-border" />
+              <DropdownMenuItem onClick={handleLogout} className="focus:bg-destructive focus:text-destructive-foreground rounded-md">Sair</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

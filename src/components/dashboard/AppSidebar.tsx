@@ -33,13 +33,12 @@ const navigationItems = [
   },
   {
     title: "Integrações AI",
-    url: "/dashboard/ai",
+    url: "/integrations",
     icon: Bot,
-    description: "APIs de Inteligência Artificial",
   },
   {
     title: "WhatsApp Business",
-    url: "/dashboard/whatsapp",
+    url: "/whatsapp-business",
     icon: MessageSquare,
     description: "API do WhatsApp Business",
   },
@@ -94,16 +93,16 @@ export function AppSidebar() {
     } transition-colors duration-200`;
 
   return (
-    <Sidebar className={collapsed ? "w-[72px]" : "w-64"} collapsible="icon">
+    <Sidebar className={`bg-card ${collapsed ? "w-[72px]" : "w-64"}`} collapsible="icon">
       <SidebarContent>
         {/* Logo */}
-        <div className="p-4 border-b border-sidebar-border">
+        <div className="p-4 border-b border-border">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-dark-primary rounded-3xl flex items-center justify-center shadow-lg">
               <Zap className="w-4 h-4 text-white" />
             </div>
             {!collapsed && (
-              <span className="font-bold text-sidebar-foreground">
+              <span className="font-bold text-foreground text-lg">
                 OmniAI Link
               </span>
             )}
@@ -112,14 +111,19 @@ export function AppSidebar() {
 
         {/* Main Navigation */}
         <SidebarGroup>
-          <SidebarGroupLabel>Principal</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-muted-foreground">Principal</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navigationItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink to={item.url} className={getNavCls}>
-                      <item.icon className="w-4 h-4" />
+                    <NavLink to={item.url} className={({ isActive }) =>
+                      `flex items-center gap-3 p-2 rounded-xl transition-colors duration-200 ${isActive
+                        ? "bg-primary text-primary-foreground font-medium shadow-md"
+                        : "text-foreground hover:bg-secondary hover:text-secondary-foreground"
+                      }`
+                    }>
+                      <item.icon className="w-5 h-5" />
                       {!collapsed && (
                         <div className="flex flex-col">
                           <span className="text-sm font-medium">
@@ -140,14 +144,19 @@ export function AppSidebar() {
 
         {/* Account & Settings */}
         <SidebarGroup>
-          <SidebarGroupLabel>Conta</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-muted-foreground">Conta</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {accountItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink to={item.url} className={getNavCls}>
-                      <item.icon className="w-4 h-4" />
+                    <NavLink to={item.url} className={({ isActive }) =>
+                      `flex items-center gap-3 p-2 rounded-xl transition-colors duration-200 ${isActive
+                        ? "bg-primary text-primary-foreground font-medium shadow-md"
+                        : "text-foreground hover:bg-secondary hover:text-secondary-foreground"
+                      }`
+                    }>
+                      <item.icon className="w-5 h-5" />
                       {!collapsed && <span>{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>

@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+import tailwindcssAnimate from "tailwindcss-animate";
+
 export default {
 	darkMode: ["class"],
 	content: [
@@ -19,66 +21,69 @@ export default {
 		},
 		extend: {
 			colors: {
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				// Nova Paleta de Cores (Foco no Escuro e Profundo)
+				background: '#0D0D12', // Fundo Principal
+				card: '#1A1A20', // Superfícies/Cards
+				foreground: '#E0E0E5', // Texto Principal
+				muted: '#888890', // Texto Secundário/Muted
+				border: '#33333A', // Bordas/Linhas
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: '#6A0DAD', // Roxo profundo para primário
+					foreground: '#E0E0E5', // Texto claro para primário
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					DEFAULT: '#00CED1', // Ciano/Azul turquesa para secundário
+					foreground: '#0D0D12', // Texto escuro para secundário
 				},
 				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
-				},
-				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: '#FF6B6B', // Vermelho suave para destrutivo
+					foreground: '#0D0D12', // Texto escuro para destrutivo
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: '#00CED1', // Usar ciano para acento
+					foreground: '#0D0D12', // Texto escuro para acento
 				},
-				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
-				},
-				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
-				},
+				input: '#33333A',
+				ring: '#6A0DAD',
+
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+					DEFAULT: '#1A1A20',
+					foreground: '#E0E0E5',
+					primary: '#6A0DAD',
+					'primary-foreground': '#E0E0E5',
+					accent: '#33333A',
+					'accent-foreground': '#E0E0E5',
+					border: '#33333A',
+					ring: '#6A0DAD'
 				},
 				dashboard: {
-					DEFAULT: 'hsl(var(--dashboard-bg))',
-					card: 'hsl(var(--dashboard-card))',
-					border: 'hsl(var(--dashboard-border))'
+					DEFAULT: '#0D0D12',
+					card: '#1A1A20',
+					border: '#33333A'
 				},
-				whatsapp: 'hsl(var(--whatsapp))',
-				ifood: 'hsl(var(--ifood))',
-				ai: 'hsl(var(--ai))'
+				whatsapp: '#25D366',
+				whatsappChat: {
+					background: '#131C21', // Dark background for chat area
+					bubbleSent: '#005C4B', // Darker green for sent bubbles
+					bubbleReceived: '#202C33', // Darker grey for received bubbles
+					textDark: '#E9EDEF', // Light text for dark bubbles
+					textLight: '#B0B3B8', // Slightly darker light text for secondary info
+				},
+				ifood: '#EA1D2C',
+				ai: '#6A0DAD'
 			},
 			backgroundImage: {
-				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-card': 'var(--gradient-card)'
+				'gradient-primary': 'linear-gradient(to right, var(--primary), var(--secondary))',
+				'gradient-card': 'linear-gradient(145deg, #1A1A20, #0D0D12)',
+				'gradient-dark-primary': 'linear-gradient(to right, #6A0DAD, #00CED1)',
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: '1rem',
+				md: '0.75rem',
+				sm: '0.5rem',
+				xl: '1.5rem',
+				'2xl': '2rem',
+				'3xl': '3rem', // Novo: ainda mais arredondado
 			},
 			keyframes: {
 				'accordion-down': {
@@ -116,5 +121,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;
